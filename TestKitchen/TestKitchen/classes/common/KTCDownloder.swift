@@ -41,7 +41,6 @@ class KTCDownloder: NSObject {
                 self.delegate?.downloader(self, didFailWithError: error)
                 
             case .Success:
-                print(response.data)
                 self.delegate?.downloader(self, didFinishWithData: response.data)
             }
             

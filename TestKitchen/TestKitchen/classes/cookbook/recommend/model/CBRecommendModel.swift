@@ -51,7 +51,7 @@ class CBRecommendDataModel:NSObject{
             
         }
         model.banner = bArray
-        let listArray = jsonData[""]
+        let listArray = jsonData["widgetList"]
         var wlArray = Array<CBRecommendWidgetListModel>()
         for (_,subjson) in listArray{
             //subjson解析成CBRecommendWidgetListModel类型的对象

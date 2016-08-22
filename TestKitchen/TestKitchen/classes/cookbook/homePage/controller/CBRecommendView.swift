@@ -51,107 +51,301 @@ class CBRecommendView: UIView {
 
 }
 
-extension CBRecommendView:UITableViewDelegate,UITableViewDataSource{
+//extension CBRecommendView:UITableViewDelegate,UITableViewDataSource{
+//    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        //广告数据显示一个分组
+//        var sectionNum = 1
+//        if model?.data?.widgetList?.count>0{
+//            
+//            sectionNum += (model?.data?.widgetList?.count)!
+// 
+//        }
+//        return sectionNum
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        var rowNum = 0
+//        if section == 0 {
+//            if model?.data?.banner?.count>0{
+//                rowNum = 1
+//            }
+//        }else{
+//            let listModel = model?.data?.widgetList![section-1]
+//            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue {
+//                rowNum = 1
+//            }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+//                rowNum = 1
+//            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue{
+//                rowNum = 1
+//            }
+//
+//        }
+//        return rowNum
+//    }
+//    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        
+//        var height:CGFloat = 0
+//        if indexPath.section == 0 {
+//            if model?.data?.banner?.count>0{
+//                
+//                height = 160
+//            }
+//        }else{
+//            
+//            let listModel = model?.data?.widgetList![indexPath.section-1]
+//            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+//                height = 80
+//            }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+//                height = 100
+//            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue{
+//                height = 300
+//            }
+//
+//
+//            
+//        }
+//        return height
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        
+//        var cell = UITableViewCell()
+//        if indexPath.section == 0 {
+//            if model?.data?.banner?.count>0{
+//                cell = CBRecommendADCellTableViewCell.createAdCellFor(tableView, atIndexPath: indexPath, withModel: model!)
+//            }
+//        }else{
+//            
+//            let listModel = model?.data?.widgetList![indexPath.section-1]
+//            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+//                cell = CBRecommendLikeCell.createLikeCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+//            
+//            }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+//                cell = CBRedPacketCell.createRedPackageCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+//            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue {
+//                cell = CBRecommendNewCell.createNewCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+//            }
+//
+//
+//            
+//        }
+//
+//        
+//        return cell
+//    }
+//    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        var headView :UIView? = nil
+//        if section>0{
+//            
+//            let listModel = model?.data?.widgetList![section-1]
+//            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+//                headView = CBSearchHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+//            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue{
+//                let tmpView = CBHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+//                tmpView.configTitle((listModel?.title)!)
+//                headView = tmpView
+//            }
+//
+//
+//        }
+//        return headView
+//    }
+//    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        
+//        var height:CGFloat = 0
+//        if section > 0 {
+//            
+//            let listModel = model?.data?.widgetList![section-1]
+//            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue||listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue{
+//                height = 44
+//            }
+//
+//        }
+//        
+//        return height
+//    }
+//    
+//    
+//}
+
+extension CBRecommendView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         //广告数据显示一个分组
         var sectionNum = 1
-        if model?.data?.widgetList?.count>0{
-            
+        
+        if model?.data?.widgetList?.count > 0 {
             sectionNum += (model?.data?.widgetList?.count)!
- 
         }
+        
         return sectionNum
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         var rowNum = 0
+        
         if section == 0 {
-            if model?.data?.banner?.count>0{
+            //广告的数据
+            if model?.data?.banner?.count > 0 {
                 rowNum = 1
             }
         }else{
+            
+            //其他的情况
             let listModel = model?.data?.widgetList![section-1]
             if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue {
+                //猜你喜欢
                 rowNum = 1
             }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+                //红包入口
                 rowNum = 1
+            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue {
+                //今日新品
+                rowNum = 1
+            }else if listModel?.widget_type?.integerValue == widgetType.Special.rawValue {
+                //早餐日记,健康100岁
+                rowNum = 1
+            }else if listModel?.widget_type?.integerValue == widgetType.Scene.rawValue {
+                //全部场景
+                rowNum = 1
+            }else if listModel?.widget_type?.integerValue == widgetType.Talent.rawValue {
+                //推荐达人
+                rowNum = (listModel?.widget_data?.count)!/4
             }
 
+
+            
         }
+        
         return rowNum
     }
     
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        var height:CGFloat = 0
+        var height: CGFloat = 0
+        
         if indexPath.section == 0 {
-            if model?.data?.banner?.count>0{
-                
+            //广告的高度
+            if model?.data?.banner?.count > 0 {
                 height = 160
             }
         }else{
             
+            //其他情况
             let listModel = model?.data?.widgetList![indexPath.section-1]
-            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue {
+                //猜你喜欢
                 height = 80
             }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+                //红包入口
+                height = 100
+            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue {
+                //今日新品
+                height = 300
+            }else if listModel?.widget_type?.integerValue == widgetType.Special.rawValue {
+                //早餐日记,健康100岁
+                height = 200
+            }else if listModel?.widget_type?.integerValue == widgetType.Scene.rawValue {
+                //全部场景
+                height = 60
+            }else if listModel?.widget_type?.integerValue == widgetType.Talent.rawValue {
+                //推荐达人
                 height = 80
             }
 
+
+
             
         }
+        
+        
         return height
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
+        
         if indexPath.section == 0 {
-            if model?.data?.banner?.count>0{
+            //广告
+            if model?.data?.banner?.count > 0 {
                 cell = CBRecommendADCellTableViewCell.createAdCellFor(tableView, atIndexPath: indexPath, withModel: model!)
             }
         }else{
             
+            //其他情况
             let listModel = model?.data?.widgetList![indexPath.section-1]
-            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue {
+                //猜你喜欢
                 cell = CBRecommendLikeCell.createLikeCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
-            
             }else if listModel?.widget_type?.integerValue == widgetType.RedPackage.rawValue {
+                //红包入口
                 cell = CBRedPacketCell.createRedPackageCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue {
+                //今日新品
+                cell = CBRecommendNewCell.createNewCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+                //早餐日记,健康100岁
+            }else if listModel?.widget_type?.integerValue == widgetType.Special.rawValue{
+                cell = CBSpecialCell.createSpecialCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+            }else if listModel?.widget_type?.integerValue == widgetType.Scene.rawValue{
+                //全部场景
+                cell = CBSceneCell.createSceneCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
+            }else if listModel?.widget_type?.integerValue ==
+                widgetType.Talent.rawValue{
+                //推荐达人
+                cell = CBTalentCell.createTalentCellFor(tableView, atIndexPath: indexPath, withListModel: listModel!)
             }
-
-            
         }
-
+        
         
         return cell
     }
     
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        var headView :UIView? = nil
-        if section>0{
-            
+        var headView: UIView? = nil
+        if section > 0 {
+            //其他情况
             let listModel = model?.data?.widgetList![section-1]
-            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue {
+                //猜你喜欢
                 headView = CBSearchHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+            }else if listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue || listModel?.widget_type?.integerValue == widgetType.Special.rawValue || listModel?.widget_type?.integerValue == widgetType.Talent.rawValue{
+                //今日新品
+                //早餐日记
+                //推荐达人
+                let tmpView = CBHeaderView(frame: CGRectMake(0,0,kScreenWidth,44))
+                tmpView.configTitle((listModel?.title)!)
+                headView = tmpView
             }
-
         }
+        
         return headView
     }
     
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        var height:CGFloat = 0
+        var height: CGFloat = 0
         if section > 0 {
-            
+            //其他情况
             let listModel = model?.data?.widgetList![section-1]
-            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue{
+            if listModel?.widget_type?.integerValue == widgetType.GuessYourLike.rawValue || listModel?.widget_type?.integerValue == widgetType.NewProduct.rawValue || listModel?.widget_type?.integerValue == widgetType.Special.rawValue || listModel?.widget_type?.integerValue == widgetType.Talent.rawValue{
+                //猜你喜欢 -- GuessYourLike
+                //今日新品 -- NewProduct
+                //早餐日记.健康100岁 -- Special
+                //推荐达人
                 height = 44
             }
-
         }
         
         return height
@@ -159,3 +353,5 @@ extension CBRecommendView:UITableViewDelegate,UITableViewDataSource{
     
     
 }
+
+

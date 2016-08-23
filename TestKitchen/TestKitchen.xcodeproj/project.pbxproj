@@ -85,6 +85,11 @@
 		BCD9B4AC1D65624000BAE8B1 /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD9B4AB1D65624000BAE8B1 /* search1.png */; };
 		BCD9B4AF1D65632000BAE8B1 /* CBRedPacketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9B4AD1D65632000BAE8B1 /* CBRedPacketCell.swift */; };
 		BCD9B4B01D65632000BAE8B1 /* CBRedPacketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD9B4AE1D65632000BAE8B1 /* CBRedPacketCell.xib */; };
+		BCEB51D71D6BDABB00E8D148 /* CBSubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB51D51D6BDABB00E8D148 /* CBSubjectCell.swift */; };
+		BCEB51D81D6BDABB00E8D148 /* CBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB51D61D6BDABB00E8D148 /* CBSubjectCell.xib */; };
+		BCEB51DE1D6BEA5500E8D148 /* CBMaterialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB51DD1D6BEA5500E8D148 /* CBMaterialModel.swift */; };
+		BCEB51E01D6BF6F600E8D148 /* CBMaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB51DF1D6BF6F600E8D148 /* CBMaterialView.swift */; };
+		BCEB51E21D6BFC5700E8D148 /* KTCSegmentCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB51E11D6BFC5700E8D148 /* KTCSegmentCtrl.swift */; };
 		BCEE7DB61D63FB9D00CCEAF1 /* CBRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE7DB51D63FB9D00CCEAF1 /* CBRecommendView.swift */; };
 		BCEE7DB91D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE7DB71D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.swift */; };
 		BCEE7DBA1D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEE7DB81D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.xib */; };
@@ -203,6 +208,11 @@
 		BCD9B4AB1D65624000BAE8B1 /* search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search1.png; sourceTree = "<group>"; };
 		BCD9B4AD1D65632000BAE8B1 /* CBRedPacketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRedPacketCell.swift; sourceTree = "<group>"; };
 		BCD9B4AE1D65632000BAE8B1 /* CBRedPacketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRedPacketCell.xib; sourceTree = "<group>"; };
+		BCEB51D51D6BDABB00E8D148 /* CBSubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBSubjectCell.swift; sourceTree = "<group>"; };
+		BCEB51D61D6BDABB00E8D148 /* CBSubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBSubjectCell.xib; sourceTree = "<group>"; };
+		BCEB51DD1D6BEA5500E8D148 /* CBMaterialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBMaterialModel.swift; sourceTree = "<group>"; };
+		BCEB51DF1D6BF6F600E8D148 /* CBMaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBMaterialView.swift; sourceTree = "<group>"; };
+		BCEB51E11D6BFC5700E8D148 /* KTCSegmentCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTCSegmentCtrl.swift; sourceTree = "<group>"; };
 		BCEE7DB51D63FB9D00CCEAF1 /* CBRecommendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBRecommendView.swift; path = ../../homePage/controller/CBRecommendView.swift; sourceTree = "<group>"; };
 		BCEE7DB71D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBRecommendADCellTableViewCell.swift; path = ../model/CBRecommendADCellTableViewCell.swift; sourceTree = "<group>"; };
 		BCEE7DB81D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CBRecommendADCellTableViewCell.xib; path = ../model/CBRecommendADCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -344,6 +354,7 @@
 				BCCD20D11D62BDB20006CD9D /* KTCDownloder.swift */,
 				BCEE7DBB1D6407F200CCEAF1 /* UIImageView+Util.swift */,
 				BCD9B4A51D654BA000BAE8B1 /* Util.swift */,
+				BCEB51E11D6BFC5700E8D148 /* KTCSegmentCtrl.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -391,6 +402,7 @@
 		BC3C28581D6153F8003073AF /* cookbook */ = {
 			isa = PBXGroup;
 			children = (
+				BCEB51D91D6BEA3300E8D148 /* foodMaterial */,
 				BCCD20D31D62C62B0006CD9D /* recommend */,
 				BC3C28591D6153F8003073AF /* homePage */,
 			);
@@ -425,6 +437,7 @@
 		BC3C285C1D6153F8003073AF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				BCEB51DF1D6BF6F600E8D148 /* CBMaterialView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -687,6 +700,8 @@
 				BCF32E001D6A977900689799 /* CBTalentCell.xib */,
 				BCF32E031D6AA61A00689799 /* CBWorksCell.swift */,
 				BCF32E041D6AA61A00689799 /* CBWorksCell.xib */,
+				BCEB51D51D6BDABB00E8D148 /* CBSubjectCell.swift */,
+				BCEB51D61D6BDABB00E8D148 /* CBSubjectCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -708,6 +723,38 @@
 				BCD9B4AB1D65624000BAE8B1 /* search1.png */,
 			);
 			path = homePage;
+			sourceTree = "<group>";
+		};
+		BCEB51D91D6BEA3300E8D148 /* foodMaterial */ = {
+			isa = PBXGroup;
+			children = (
+				BCEB51DA1D6BEA3300E8D148 /* controller */,
+				BCEB51DB1D6BEA3300E8D148 /* model */,
+				BCEB51DC1D6BEA3300E8D148 /* view */,
+			);
+			path = foodMaterial;
+			sourceTree = "<group>";
+		};
+		BCEB51DA1D6BEA3300E8D148 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		BCEB51DB1D6BEA3300E8D148 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BCEB51DD1D6BEA5500E8D148 /* CBMaterialModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		BCEB51DC1D6BEA3300E8D148 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		BCEE7DBD1D640A2200CCEAF1 /* common */ = {
@@ -856,6 +903,7 @@
 				BC3C282E1D6151B4003073AF /* LaunchScreen.storyboard in Resources */,
 				BC3C28851D61554C003073AF /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 				BC3C282B1D6151B4003073AF /* Assets.xcassets in Resources */,
+				BCEB51D81D6BDABB00E8D148 /* CBSubjectCell.xib in Resources */,
 				BC0D8EF71D66943800A3134D /* CBRecommendNewCell.xib in Resources */,
 				BCCD20CC1D62B9C30006CD9D /* navBtn_bag.png in Resources */,
 				BCF32E021D6A977900689799 /* CBTalentCell.xib in Resources */,
@@ -958,6 +1006,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC3C28261D6151B4003073AF /* ViewController.swift in Sources */,
+				BCEB51DE1D6BEA5500E8D148 /* CBMaterialModel.swift in Sources */,
 				BC0D8EF61D66943800A3134D /* CBRecommendNewCell.swift in Sources */,
 				BCCD20D21D62BDB20006CD9D /* KTCDownloder.swift in Sources */,
 				BCD9B4A81D655AEC00BAE8B1 /* CBSearchHeaderView.swift in Sources */,
@@ -971,14 +1020,17 @@
 				BCD9B4A61D654BA000BAE8B1 /* Util.swift in Sources */,
 				BC3C289B1D61751A003073AF /* UIButton+Util.swift in Sources */,
 				BC3C28911D615B92003073AF /* FoodClassViewController.swift in Sources */,
+				BCEB51D71D6BDABB00E8D148 /* CBSubjectCell.swift in Sources */,
 				BC3C28971D61731A003073AF /* UIView+Util.swift in Sources */,
 				BCF32E051D6AA61A00689799 /* CBWorksCell.swift in Sources */,
 				BC3C28931D615BB8003073AF /* ProfileViewController.swift in Sources */,
 				BCEE7DB61D63FB9D00CCEAF1 /* CBRecommendView.swift in Sources */,
 				BCF32DFD1D6A907500689799 /* CBSceneCell.swift in Sources */,
 				BC3C28871D615A7D003073AF /* MainTabBarController.swift in Sources */,
+				BCEB51E01D6BF6F600E8D148 /* CBMaterialView.swift in Sources */,
 				BCF32E011D6A977900689799 /* CBTalentCell.swift in Sources */,
 				BCEE7DBC1D6407F200CCEAF1 /* UIImageView+Util.swift in Sources */,
+				BCEB51E21D6BFC5700E8D148 /* KTCSegmentCtrl.swift in Sources */,
 				BC3C288B1D615B06003073AF /* CookbookViewController.swift in Sources */,
 				BC3C28991D6173C6003073AF /* UILabel+Util.swift in Sources */,
 				BCEE7DB91D63FF8200CCEAF1 /* CBRecommendADCellTableViewCell.swift in Sources */,

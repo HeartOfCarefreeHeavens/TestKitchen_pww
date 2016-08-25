@@ -8,9 +8,9 @@
 
 import Foundation
 
-//这个文件用来定义枚举
+//这个文件用来定义枚举和其他类型
 
-//食材首页推荐的数据类型
+//1.食材首页推荐的数据类型
 
 public enum widgetType:Int{
     
@@ -24,3 +24,12 @@ public enum widgetType:Int{
     case Subject = 7 //专题
 
 }
+
+//2.食材首页推荐的cell的点击事件闭包的类型
+
+/*
+ 闭包参数
+ (1)标题文字
+ (2)link字符串
+ */
+public typealias CBCellClosure = (String?,String)->Void

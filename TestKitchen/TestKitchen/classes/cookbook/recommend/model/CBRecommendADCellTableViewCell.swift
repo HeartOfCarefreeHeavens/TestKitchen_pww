@@ -9,7 +9,8 @@
 import UIKit
 
 class CBRecommendADCellTableViewCell: UITableViewCell {
-    
+    //图片的点击事件
+    var clickClosure:CBCellClosure?
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -66,6 +67,15 @@ class CBRecommendADCellTableViewCell: UITableViewCell {
                 
                 containerView.addSubview(tmpImageView)
                 
+                
+                //添加一个手势
+                tmpImageView.userInteractionEnabled = true
+                tmpImageView.tag = 500 + i
+                let g = UITapGestureRecognizer(target: self, action: #selector(tapImage(_:)))
+                tmpImageView.addGestureRecognizer(g)
+                
+                
+                
                 tmpImageView.snp_makeConstraints(closure: { (make) in
                     
                     make.top.bottom.equalTo(containerView)
@@ -96,9 +106,24 @@ class CBRecommendADCellTableViewCell: UITableViewCell {
         
     }
     
+    func tapImage(g:UIGestureRecognizer){
+        let index = (g.view?.tag)!-500
+        
+        //获取模型对象
+        let imageModel = bannerArray![index]
+        //要将点击事件传到视图控制器
+        clickClosure!(nil,imageModel.banner_link!)
+    }
+    
+    
     
     //创建cell的方法
-    class func createAdCellFor(tableView:UITableView,atIndexPath index:NSIndexPath,withModel model:CBRecommendModel)->CBRecommendADCellTableViewCell{
+    /*
+     参数:
+     (1)tableView:cell所在表格
+     (2)index:
+     */
+    class func createAdCellFor(tableView:UITableView,atIndexPath index:NSIndexPath,withModel model:CBRecommendModel,cellClosure:CBCellClosure?)->CBRecommendADCellTableViewCell{
         
         let cellId = "recommendADCellId"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? CBRecommendADCellTableViewCell
@@ -107,6 +132,7 @@ class CBRecommendADCellTableViewCell: UITableViewCell {
         }
         
         cell?.bannerArray = model.data?.banner
+        cell?.clickClosure = cellClosure
         return cell!
         
     }

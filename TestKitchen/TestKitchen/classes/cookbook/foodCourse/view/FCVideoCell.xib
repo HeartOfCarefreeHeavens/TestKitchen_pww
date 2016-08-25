@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoCellId" id="KGk-i7-Jjw" customClass="FCVideoCell" customModule="TestKitchen" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nuj-An-vLT" userLabel="bgImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S8-sU-4Ma">
+                        <rect key="frame" x="167" y="60" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="L3N-70-ICy"/>
+                            <constraint firstAttribute="height" constant="40" id="yRa-i4-4JP"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="play-A.png"/>
+                        <connections>
+                            <action selector="playVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dyl-Xf-LgL"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="nuj-An-vLT" secondAttribute="trailing" id="62U-Ed-0Yb"/>
+                    <constraint firstItem="7S8-sU-4Ma" firstAttribute="centerX" secondItem="nuj-An-vLT" secondAttribute="centerX" id="Cc7-L9-gBx"/>
+                    <constraint firstItem="nuj-An-vLT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MZr-Qx-077"/>
+                    <constraint firstItem="nuj-An-vLT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lYf-hZ-Xuw"/>
+                    <constraint firstAttribute="bottom" secondItem="nuj-An-vLT" secondAttribute="bottom" id="r4V-Xb-qmf"/>
+                    <constraint firstItem="7S8-sU-4Ma" firstAttribute="centerY" secondItem="nuj-An-vLT" secondAttribute="centerY" id="tu8-70-5PO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgImageView" destination="nuj-An-vLT" id="UEV-xx-tIQ"/>
+            </connections>
+            <point key="canvasLocation" x="279.5" y="299"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="play-A.png" width="50" height="50"/>
+    </resources>
+</document>

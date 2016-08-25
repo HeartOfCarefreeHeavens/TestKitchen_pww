@@ -15,6 +15,9 @@ public enum KTCDownloaderType: Int {
     case Recommend    //食材的首页推荐
     case FoodMaterial //首页食材
     case Category     //首页分类
+    
+    case FoodCourse  //食材课程
+    case FoodCourseComment  //食材课程评论
 }
 
 protocol KTCDownloaderDelegate:NSObjectProtocol {

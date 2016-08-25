@@ -11,6 +11,7 @@ import UIKit
 class CBRecommendLikeCell: UITableViewCell {
 
     
+    
     var model:CBRecommendWidgetListModel?{
         
         didSet{
@@ -59,9 +60,8 @@ class CBRecommendLikeCell: UITableViewCell {
                         }
                     }
                 }
-
+                i += 1
             }
-            i += 1
         }
         
         
@@ -82,11 +82,6 @@ class CBRecommendLikeCell: UITableViewCell {
     }
     
     @IBAction func clickBtn(sender: UIButton) {
-        
-        
-        
-        
-        
         
         
     }

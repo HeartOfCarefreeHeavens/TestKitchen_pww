@@ -10,6 +10,8 @@ import UIKit
 
 class CBRecommendView: UIView {
 
+    //点击事件
+    var clickClosure:CBCellClosure?
     
     private var tbView :UITableView?
     
@@ -293,7 +295,7 @@ extension CBRecommendView: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             //广告
             if model?.data?.banner?.count > 0 {
-                cell = CBRecommendADCellTableViewCell.createAdCellFor(tableView, atIndexPath: indexPath, withModel: model!)
+                cell = CBRecommendADCellTableViewCell.createAdCellFor(tableView, atIndexPath: indexPath, withModel: model!,cellClosure: clickClosure)
             }
         }else{
             
@@ -381,18 +383,20 @@ extension CBRecommendView: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        let h:CGFloat = 44
-//        if scrollView.contentOffset.y<h{
-//            scrollView.contentInset = UIEdgeInsetsMake(h, 0, 0, 0)
-//        }else if scrollView.contentOffset.y>0{
-//            scrollView.contentInset = UIEdgeInsetsMake(0, 0, -scrollView.contentOffset.y, 0)
-//            
-//        }
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let h:CGFloat = 44
         
-//    }
-    
-    
+        
+        if scrollView.contentOffset.y > h {
+            scrollView.contentInset = UIEdgeInsetsMake(-h, 0, 0, 0)
+        }else if scrollView.contentOffset.y > 0 {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)
+        }
+ 
+        
+
+    }
+
 }
 
 

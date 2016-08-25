@@ -8,10 +8,30 @@
 
 import UIKit
 
+protocol KTCSegmentCtrlDelegate:NSObjectProtocol {
+    func didSelectSegCtrl(segCtrl:KTCSegmentCtrl,atIndex index:Int)
+}
+
+
 class KTCSegmentCtrl: UIView {
 
+    
+    
+    weak var delegate:KTCSegmentCtrlDelegate?
+    
+    //下划线视图
+    private var lineView:UIView?
     //选中按钮的序号
-    var selectIndex:Int = 0
+    var selectIndex:Int = 0 {
+        didSet{
+            
+            if selectIndex != oldValue{
+                
+                selectBtnAtIndex(selectIndex,lastIndex: oldValue)
+
+            }
+        }
+    }
     
     //重新实现初始化方法
     /*
@@ -20,6 +40,8 @@ class KTCSegmentCtrl: UIView {
     */
      init(frame: CGRect,titleNames:[String]) {
         super.init(frame: frame)
+        
+        
         
         if titleNames.count>0{
             //按钮的宽度
@@ -42,25 +64,59 @@ class KTCSegmentCtrl: UIView {
                 addSubview(btn)
 
             }
+            //加下划线
+            lineView = UIView.createView()
+            lineView?.backgroundColor = UIColor.orangeColor()
+            lineView?.frame = CGRectMake(0, bounds.size.height-2, w, 2)
+            addSubview(lineView!)
         }
+    }
+    
+    
+    /*
+     index:当前选中的序号
+     lastIndex:上次选中的序号
+     
+     */
+    func selectBtnAtIndex(index:Int,lastIndex:Int){
+        
+        //选中当前点击的按钮
+        let curBtn = viewWithTag(300+index)
+        if curBtn?.isKindOfClass(KTCSegmentBtn.self) == true {
+            let btn = curBtn as! KTCSegmentBtn
+            btn.clicked = true
+
+        }
+        
+        //取消上次选中的按钮
+        let lastBtn = viewWithTag(lastIndex + 300)
+        if lastBtn!.isKindOfClass(KTCSegmentBtn.self) == true {
+            let lastSegBtn = lastBtn as! KTCSegmentBtn
+            lastSegBtn.clicked = false
+        }
+        
+//        //修改当前选中的序号
+//        selectIndex = index
+        
+        //修改下划线视图的位置
+        lineView?.frame.origin.x = (lineView?.bounds.size.width)!*CGFloat(selectIndex)
+
+        
+
     }
     
     func clickBtn(btn:KTCSegmentBtn){
         
+        
+        
         //如果点击的是已经选中的按钮
         if btn.tag != 300 + selectIndex {
-            
-            //选中当前点击的按钮
-            btn.clicked = true
-            
-            //取消上次选中的按钮
-            let lastBtn = viewWithTag(selectIndex + 300)
-            if lastBtn!.isKindOfClass(KTCSegmentBtn.self) == true {
-                let lastSegBtn = lastBtn as! KTCSegmentBtn
-                lastSegBtn.clicked = false
-            }
-
+            //修改UI
             selectIndex = btn.tag-300
+            
+            
+            //其他操作
+            delegate?.didSelectSegCtrl(self, atIndex: selectIndex)
         }
         
         

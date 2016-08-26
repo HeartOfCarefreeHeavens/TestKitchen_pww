@@ -16,7 +16,14 @@ class FoodCourseController: BaseViewController {
     
     private var tbView:UITableView?
     
+    //食材课程的数据
     private var serialModel:FoodCourseModel?
+    
+    //当前选中集数的序号
+    private var serialIndex:Int = 0
+    
+    //集数的cell是合起还是展开
+    private var serialIsExpand:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +61,7 @@ class FoodCourseController: BaseViewController {
         
         self.automaticallyAdjustsScrollViewInsets = false 
         tbView = UITableView(frame: CGRectMake(0, 64, kScreenWidth, kScreenHeight-64), style: .Plain)
-        
+        tbView?.separatorStyle = .None
         tbView?.delegate = self
         tbView?.dataSource = self
         view.addSubview(tbView!)
@@ -126,7 +133,7 @@ extension FoodCourseController:UITableViewDelegate,UITableViewDataSource{
         var rowNum = 0
         if section == 0 {
             //食材数据
-            if serialModel != nil {
+            if serialModel?.data?.data?.count>0 {
                 rowNum = 3
             }
         }else if section == 1{
@@ -139,7 +146,18 @@ extension FoodCourseController:UITableViewDelegate,UITableViewDataSource{
         var height:CGFloat = 0
         if indexPath.section == 0 {
             if indexPath.row == 0 {
+                //视频的cell
                 height = 160
+            }else if indexPath.row == 1 {
+                //课程标题和描述
+                if serialModel?.data?.data?.count>0{
+                    let model = serialModel?.data?.data![serialIndex]
+                    height = FCCourseCell.heightWithModel(model!)
+                }
+            }else if indexPath.row == 2 {
+                //集数
+                height = FCSerialCell.heightWithNum((serialModel?.data?.data?.count)!,isExpand: serialIsExpand)
+                
             }
         }else if indexPath.section == 1 {
             
@@ -150,40 +168,121 @@ extension FoodCourseController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        var cell = UITableViewCell()
         if indexPath.section == 0 {
             //食材课程的数据
+            
+            //获取模型对象
+            let dataModel = serialModel?.data?.data![serialIndex]
+
             if indexPath.row == 0 {
-                //视频的cell 
-                let cellId = "videoCellId"
-                var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? FCVideoCell
-                if cell == nil {
-                    cell = NSBundle.mainBundle().loadNibNamed("FCVideoCell", owner: nil, options: nil).last as? FCVideoCell
-                }
+                //视频的cell
+                cell = createVideoCellForTableView(tableView, atIndexPath: indexPath, withModel: dataModel!)
+            }else if indexPath.row == 1 {
                 
-                let videoModel = serialModel?.data?.data![0]
-                cell?.model = videoModel
-                
-                cell?.videoClosure = {
-                    (urlString) in
-                    let url = NSURL(string: urlString)
-                    let player = AVPlayer(URL: url!)
-                    let playerCtrl = AVPlayerViewController()
-                    playerCtrl.player = player
-                    player.play()
-                    
-                    self.presentViewController(playerCtrl, animated: true, completion: nil)
-                    
-                }
-                
-                return cell!
-                
+                //课程名称和描述
+                cell = createCourseCellForTableView(tableView, atIndexPath: indexPath, withModel: dataModel!)
+            }else if indexPath.row == 2 {
+                //集数
+                cell = createSerialCellForTableView(tableView, atIndexPath: indexPath, withModel: serialModel!)
             }
-        }else if indexPath == 1 {
+        }else if indexPath.section == 1 {
             //评论
         }
-        return UITableViewCell()
+        
+        cell.selectionStyle = .None
+        return cell
+    }
+    
+    /*创建视频的cell*/
+    func createVideoCellForTableView(tableView:UITableView,atIndexPath indexPath:NSIndexPath,withModel model:FoodCourseSerialModel)->FCVideoCell{
+        
+        let cellId = "videoCellId"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? FCVideoCell
+        if cell == nil {
+            cell = NSBundle.mainBundle().loadNibNamed("FCVideoCell", owner: nil, options: nil).last as? FCVideoCell
+        }
+        //显示数据
+        cell?.model = model
+        
+        cell?.videoClosure = {
+            (urlString) in
+            let url = NSURL(string: urlString)
+            let player = AVPlayer(URL: url!)
+            let playerCtrl = AVPlayerViewController()
+            playerCtrl.player = player
+            player.play()
+            
+            self.presentViewController(playerCtrl, animated: true, completion: nil)
+            
+        }
+        
+        return cell!
+        
+
+        
+    }
+    
+    /*创建课程标题和描述文字的cell*/
+    func createCourseCellForTableView(tableView:UITableView,atIndexPath indexPath:NSIndexPath,withModel model:FoodCourseSerialModel)->FCCourseCell{
+        
+        let cellId = "courseCellId"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? FCCourseCell
+        if cell == nil {
+            cell = NSBundle.mainBundle().loadNibNamed("FCCourseCell", owner: nil, options: nil).last as? FCCourseCell
+        }
+        
+        cell?.model = model
+        
+        return cell!
+        
     }
     
     
+    func createSerialCellForTableView(tableView:UITableView,atIndexPath indexPath:NSIndexPath,withModel model:FoodCourseModel)->FCSerialCell{
+        
+        let cellId = "serialCellId"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as? FCSerialCell
+        
+        if cell == nil {
+            cell = FCSerialCell(style: .Default, reuseIdentifier: cellId)
+        }
+        
+        //传num的代理
+        cell?.delegate = self
+        
+        //
+        cell?.isExpand = serialIsExpand
+
+        //显示数据
+        cell?.num = model.data?.data?.count
+        //设置选中的序号
+        cell?.selectIndex = serialIndex
+        
+        return cell!
+    }
+    
 }
 
+//FCSerialCell的代理
+extension FoodCourseController:FCSerialCellDelegate{
+    
+    func didSelectSerialAtIndex(index: Int) {
+        //修改当前选择集数的序号
+        serialIndex = index
+        
+        //刷新表格第一个section的数据
+        tbView?.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+    }
+    
+    func changeExpandState(isExpand: Bool) {
+        
+        serialIsExpand = isExpand
+        //刷新表格
+        tbView?.reloadRowsAtIndexPaths([NSIndexPath(forRow:2 , inSection: 0)], withRowAnimation: .Automatic)
+        
+        
+        
+    }
+    
+}

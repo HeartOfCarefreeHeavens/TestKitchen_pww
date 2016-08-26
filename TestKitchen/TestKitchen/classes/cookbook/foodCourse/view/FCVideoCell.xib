@@ -27,10 +27,22 @@
                             <action selector="playVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dyl-Xf-LgL"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cS-17-x0J" userLabel="titleLabel">
+                        <rect key="frame" x="20" y="129" width="150" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="9nt-Fq-z4L"/>
+                            <constraint firstAttribute="height" constant="20" id="aa1-wT-UqY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="nuj-An-vLT" secondAttribute="trailing" id="62U-Ed-0Yb"/>
+                    <constraint firstItem="6cS-17-x0J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6pd-79-ScT"/>
                     <constraint firstItem="7S8-sU-4Ma" firstAttribute="centerX" secondItem="nuj-An-vLT" secondAttribute="centerX" id="Cc7-L9-gBx"/>
+                    <constraint firstAttribute="bottom" secondItem="6cS-17-x0J" secondAttribute="bottom" constant="10" id="Dfo-TT-kCm"/>
                     <constraint firstItem="nuj-An-vLT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MZr-Qx-077"/>
                     <constraint firstItem="nuj-An-vLT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lYf-hZ-Xuw"/>
                     <constraint firstAttribute="bottom" secondItem="nuj-An-vLT" secondAttribute="bottom" id="r4V-Xb-qmf"/>
@@ -39,6 +51,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bgImageView" destination="nuj-An-vLT" id="UEV-xx-tIQ"/>
+                <outlet property="titleLabel" destination="6cS-17-x0J" id="t3m-yv-RIx"/>
             </connections>
             <point key="canvasLocation" x="279.5" y="299"/>
         </tableViewCell>

@@ -89,6 +89,11 @@
 		BCD9B4AC1D65624000BAE8B1 /* search1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD9B4AB1D65624000BAE8B1 /* search1.png */; };
 		BCD9B4AF1D65632000BAE8B1 /* CBRedPacketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9B4AD1D65632000BAE8B1 /* CBRedPacketCell.swift */; };
 		BCD9B4B01D65632000BAE8B1 /* CBRedPacketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD9B4AE1D65632000BAE8B1 /* CBRedPacketCell.xib */; };
+		BCDB57271D6FCF1E00DC38B0 /* FCCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB57251D6FCF1E00DC38B0 /* FCCourseCell.swift */; };
+		BCDB57281D6FCF1E00DC38B0 /* FCCourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDB57261D6FCF1E00DC38B0 /* FCCourseCell.xib */; };
+		BCDB572A1D6FDAF600DC38B0 /* FCSerialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB57291D6FDAF600DC38B0 /* FCSerialCell.swift */; };
+		BCDB572E1D6FF22B00DC38B0 /* pull@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB572C1D6FF22B00DC38B0 /* pull@3x.png */; };
+		BCDB572F1D6FF22B00DC38B0 /* push@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDB572D1D6FF22B00DC38B0 /* push@3x.png */; };
 		BCE10C4E1D6D3B020038C9C4 /* CBMaterialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE10C4D1D6D3B020038C9C4 /* CBMaterialCell.swift */; };
 		BCEB51D71D6BDABB00E8D148 /* CBSubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEB51D51D6BDABB00E8D148 /* CBSubjectCell.swift */; };
 		BCEB51D81D6BDABB00E8D148 /* CBSubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB51D61D6BDABB00E8D148 /* CBSubjectCell.xib */; };
@@ -217,6 +222,11 @@
 		BCD9B4AB1D65624000BAE8B1 /* search1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search1.png; sourceTree = "<group>"; };
 		BCD9B4AD1D65632000BAE8B1 /* CBRedPacketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBRedPacketCell.swift; sourceTree = "<group>"; };
 		BCD9B4AE1D65632000BAE8B1 /* CBRedPacketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBRedPacketCell.xib; sourceTree = "<group>"; };
+		BCDB57251D6FCF1E00DC38B0 /* FCCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCCourseCell.swift; sourceTree = "<group>"; };
+		BCDB57261D6FCF1E00DC38B0 /* FCCourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCCourseCell.xib; sourceTree = "<group>"; };
+		BCDB57291D6FDAF600DC38B0 /* FCSerialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCSerialCell.swift; sourceTree = "<group>"; };
+		BCDB572C1D6FF22B00DC38B0 /* pull@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull@3x.png"; sourceTree = "<group>"; };
+		BCDB572D1D6FF22B00DC38B0 /* push@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "push@3x.png"; sourceTree = "<group>"; };
 		BCE10C4D1D6D3B020038C9C4 /* CBMaterialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBMaterialCell.swift; sourceTree = "<group>"; };
 		BCEB51D51D6BDABB00E8D148 /* CBSubjectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBSubjectCell.swift; sourceTree = "<group>"; };
 		BCEB51D61D6BDABB00E8D148 /* CBSubjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBSubjectCell.xib; sourceTree = "<group>"; };
@@ -648,6 +658,9 @@
 			children = (
 				BCCBD0111D6EA03600994FFD /* FCVideoCell.swift */,
 				BCCBD0121D6EA03600994FFD /* FCVideoCell.xib */,
+				BCDB57251D6FCF1E00DC38B0 /* FCCourseCell.swift */,
+				BCDB57261D6FCF1E00DC38B0 /* FCCourseCell.xib */,
+				BCDB57291D6FDAF600DC38B0 /* FCSerialCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -754,6 +767,7 @@
 		BCD9B4A91D65624000BAE8B1 /* cookbook */ = {
 			isa = PBXGroup;
 			children = (
+				BCDB572B1D6FF22B00DC38B0 /* foodcourse */,
 				BCD9B4AA1D65624000BAE8B1 /* homePage */,
 			);
 			path = cookbook;
@@ -768,6 +782,15 @@
 				BCD9B4AB1D65624000BAE8B1 /* search1.png */,
 			);
 			path = homePage;
+			sourceTree = "<group>";
+		};
+		BCDB572B1D6FF22B00DC38B0 /* foodcourse */ = {
+			isa = PBXGroup;
+			children = (
+				BCDB572C1D6FF22B00DC38B0 /* pull@3x.png */,
+				BCDB572D1D6FF22B00DC38B0 /* push@3x.png */,
+			);
+			path = foodcourse;
 			sourceTree = "<group>";
 		};
 		BCEB51D91D6BEA3300E8D148 /* foodMaterial */ = {
@@ -943,6 +966,7 @@
 				BCCD20A91D62A1C50006CD9D /* home_select@3x.png in Resources */,
 				BCCD20AA1D62A1C50006CD9D /* mine_normal@2x.png in Resources */,
 				BCCD20A81D62A1C50006CD9D /* home_select@2x.png in Resources */,
+				BCDB57281D6FCF1E00DC38B0 /* FCCourseCell.xib in Resources */,
 				BCCD20CF1D62B9C30006CD9D /* search@2x.png in Resources */,
 				BC3C28821D61554C003073AF /* LaunchImage-700@2x.png in Resources */,
 				BC3C287E1D61554C003073AF /* AppIcon40x40@3x.png in Resources */,
@@ -951,11 +975,13 @@
 				BC3C28851D61554C003073AF /* LaunchImage-800-Portrait-736h@3x.png in Resources */,
 				BC3C282B1D6151B4003073AF /* Assets.xcassets in Resources */,
 				BCEB51D81D6BDABB00E8D148 /* CBSubjectCell.xib in Resources */,
+				BCDB572F1D6FF22B00DC38B0 /* push@3x.png in Resources */,
 				BC0D8EF71D66943800A3134D /* CBRecommendNewCell.xib in Resources */,
 				BCCD20CC1D62B9C30006CD9D /* navBtn_bag.png in Resources */,
 				BCF32E021D6A977900689799 /* CBTalentCell.xib in Resources */,
 				BCCD20BD1D62A2D30006CD9D /* community_select@3x.png in Resources */,
 				BCD9B4AC1D65624000BAE8B1 /* search1.png in Resources */,
+				BCDB572E1D6FF22B00DC38B0 /* pull@3x.png in Resources */,
 				BC0D8EFF1D66AE2F00A3134D /* more_icon.png in Resources */,
 				BCCD20BC1D62A2D30006CD9D /* community_select@2x.png in Resources */,
 				BCCD20B01D62A1C50006CD9D /* report_select@2x.png in Resources */,
@@ -1053,11 +1079,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDB572A1D6FDAF600DC38B0 /* FCSerialCell.swift in Sources */,
 				BC3C28261D6151B4003073AF /* ViewController.swift in Sources */,
 				BCEB51DE1D6BEA5500E8D148 /* CBMaterialModel.swift in Sources */,
 				BC0D8EF61D66943800A3134D /* CBRecommendNewCell.swift in Sources */,
 				BCCD20D21D62BDB20006CD9D /* KTCDownloder.swift in Sources */,
 				BCD9B4A81D655AEC00BAE8B1 /* CBSearchHeaderView.swift in Sources */,
+				BCDB57271D6FCF1E00DC38B0 /* FCCourseCell.swift in Sources */,
 				BC3C28891D615AB8003073AF /* BaseViewController.swift in Sources */,
 				BCCBD00E1D6E8A7600994FFD /* FoodCourseController.swift in Sources */,
 				BC3C288D1D615B3F003073AF /* CommunityViewController.swift in Sources */,

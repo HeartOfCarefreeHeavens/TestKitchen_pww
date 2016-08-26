@@ -23,6 +23,7 @@ class FCVideoCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var bgImageView: UIImageView!
     
@@ -38,6 +39,12 @@ class FCVideoCell: UITableViewCell {
         //图片
         let url = NSURL(string: (model?.course_image)!)
         self.bgImageView.kf_setImageWithURL(url, placeholderImage: UIImage(named: "sdefaultImage"), optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        //文字
+        
+        if model?.video_watchcount != nil {
+            titleLabel.text = String(format: "%@人做过", (model?.video_watchcount)!)
+
+        }
 
     }
     
